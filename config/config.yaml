@@ -136,68 +136,68 @@ rss:
   # ===========================
   # AI & 大模型相关 (Open Source & Research)
   # ===========================
-  - id: "51cto"
+    - id: "51cto"
       name: "51 cto"
       url: "https://rsshub.app/51cto/index/recommend"
       max_age_days: 3               # 示例：只推送1天内的文章
       
-  - id: "openai-news"
-    name: "OpenAI News"
-    url: "https://openai.com/news/rss.xml"
-    max_age_days: 3
+    - id: "openai-news"
+      name: "OpenAI News"
+      url: "https://openai.com/news/rss.xml"
+      max_age_days: 3
+  
+    - id: "huggingface-blog"
+      name: "Hugging Face Blog"
+      url: "https://huggingface.co/blog/feed.xml"
+      max_age_days: 3
 
-  - id: "huggingface-blog"
-    name: "Hugging Face Blog"
-    url: "https://huggingface.co/blog/feed.xml"
-    max_age_days: 3
-
-  # Google DeepMind (人工智能前沿研究)
-  - id: "deepmind"
-    name: "Google DeepMind"
-    url: "https://deepmind.google/blog/rss.xml" 
-    max_age_days: 7
+    # Google DeepMind (人工智能前沿研究)
+    - id: "deepmind"
+      name: "Google DeepMind"
+      url: "https://deepmind.google/blog/rss.xml" 
+      max_age_days: 7
 
   # ===========================
   # Java & Spring 生态
   # ===========================
-  - id: "spring-io"
-    name: "Spring 官方博客"
-    url: "https://spring.io/blog.atom"
-    max_age_days: 7
-
-  - id: "baeldung"
-    name: "Baeldung (Java/Spring 教程)"
-    url: "https://www.baeldung.com/feed"
-    # 非常活跃的教程站，建议 max_age_days 设小一点，否则一次推送太多
-    max_age_days: 2
-
-  - id: "jetbrains-idea"
-    name: "IntelliJ IDEA Blog"
-    url: "https://blog.jetbrains.com/idea/feed/"
-    max_age_days: 14
-
-  - id: "infoq-java"
-    name: "InfoQ Java"
-    url: "https://feed.infoq.com/java/"
-    max_age_days: 3
+    - id: "spring-io"
+      name: "Spring 官方博客"
+      url: "https://spring.io/blog.atom"
+      max_age_days: 7
+  
+    - id: "baeldung"
+      name: "Baeldung (Java/Spring 教程)"
+      url: "https://www.baeldung.com/feed"
+      # 非常活跃的教程站，建议 max_age_days 设小一点，否则一次推送太多
+      max_age_days: 2
+  
+    - id: "jetbrains-idea"
+      name: "IntelliJ IDEA Blog"
+      url: "https://blog.jetbrains.com/idea/feed/"
+      max_age_days: 14
+  
+    - id: "infoq-java"
+      name: "InfoQ Java"
+      url: "https://feed.infoq.com/java/"
+      max_age_days: 3
 
   # ===========================
   # 架构 & 通用技术 (Open Source)
   # ===========================
-  - id: "kubernetes"
-    name: "Kubernetes Blog"
-    url: "https://kubernetes.io/feed.xml"
-    max_age_days: 7
-
-  - id: "coolshell"
-    name: "酷壳 CoolShell (陈皓)"
-    url: "https://coolshell.cn/feed"
-    max_age_days: 30 # 更新频率低，但篇篇经典
-
-  - id: "martinfowler"
-    name: "Martin Fowler (架构设计)"
-    url: "https://martinfowler.com/feed.atom"
-    max_age_days: 14
+    - id: "kubernetes"
+      name: "Kubernetes Blog"
+      url: "https://kubernetes.io/feed.xml"
+      max_age_days: 7
+  
+    - id: "coolshell"
+      name: "酷壳 CoolShell (陈皓)"
+      url: "https://coolshell.cn/feed"
+      max_age_days: 30 # 更新频率低，但篇篇经典
+  
+    - id: "martinfowler"
+      name: "Martin Fowler (架构设计)"
+      url: "https://martinfowler.com/feed.atom"
+      max_age_days: 14
 
     # 自定义源示例
     # - id: "custom-feed"
