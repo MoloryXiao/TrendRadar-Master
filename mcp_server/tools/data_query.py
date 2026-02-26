@@ -4,9 +4,13 @@
 实现P0核心的数据查询工具。
 """
 
+import os
 from pathlib import Path
-from typing import Dict, List, Optional, Union
+from typing import Dict, List, Optional, Tuple, Union
 
+import yaml
+
+from trendradar.ai.client import AIClient
 from ..services.data_service import DataService
 from ..utils.validators import (
     validate_platforms,
@@ -110,9 +114,6 @@ class DataQueryTools:
 
     def _load_ai_summary_config(self) -> Dict:
         """加载 AI 摘要配置"""
-        import os
-        import yaml
-
         config_path = self._project_root / "config" / "config.yaml"
         if not config_path.exists():
             return {}
@@ -140,7 +141,7 @@ class DataQueryTools:
             }
         }
 
-    def _load_prompt_template(self, prompt_file: str) -> tuple:
+    def _load_prompt_template(self, prompt_file: str) -> Tuple[str, str]:
         """加载提示词模板"""
         config_dir = self._project_root / "config"
         prompt_path = config_dir / prompt_file
@@ -219,7 +220,6 @@ class DataQueryTools:
             user_prompt = user_prompt.replace("{language}", language)
 
             # 调用 AI
-            from trendradar.ai.client import AIClient
             client = AIClient(ai_config)
 
             messages = []
