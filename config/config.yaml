@@ -140,6 +140,7 @@ rss:
       name: "51 cto"
       url: "https://rsshub.app/51cto/index/recommend"
       max_age_days: 3               # 示例：只推送1天内的文章
+      enabled: false                # 已禁用：rsshub.app 公共实例返回 403
       
     - id: "openai-news"
       name: "OpenAI News"
@@ -162,12 +163,14 @@ rss:
       name: "Anthropic News"
       url: "https://www.anthropic.com/rss.xml"
       max_age_days: 7
+      enabled: false                # 已禁用：URL 返回 404，需更新为有效地址
 
     # Meta AI Research (AI前沿研究)
     - id: "meta-ai"
       name: "Meta AI Research"
       url: "https://ai.meta.com/blog/rss/"
       max_age_days: 7
+      enabled: false                # 已禁用：URL 返回 400，需更新为有效地址
 
     # MIT Technology Review AI (AI前沿报道)
     - id: "mit-tech-review-ai"
@@ -180,18 +183,21 @@ rss:
       name: "The Batch (Andrew Ng)"
       url: "https://www.deeplearning.ai/the-batch/feed/"
       max_age_days: 7
+      enabled: false                # 已禁用：URL 返回 404，需更新为有效地址
 
     # AI 量子位 (国内AI资讯)
     - id: "qbitai"
       name: "量子位"
       url: "https://rsshub.app/qbitai"
       max_age_days: 3
+      enabled: false                # 已禁用：rsshub.app 公共实例返回 403
 
     # 机器之心 (国内AI深度报道)
     - id: "jiqizhixin"
       name: "机器之心"
       url: "https://rsshub.app/jiqizhixin"
       max_age_days: 3
+      enabled: false                # 已禁用：rsshub.app 公共实例返回 403
 
   # ===========================
   # Java & Spring 生态
@@ -206,6 +212,7 @@ rss:
       url: "https://www.baeldung.com/feed"
       # 非常活跃的教程站，建议 max_age_days 设小一点，否则一次推送太多
       max_age_days: 2
+      enabled: false                # 已禁用：网站返回 403，可尝试替换为 https://feeds.feedblitz.com/baeldung
   
     - id: "jetbrains-idea"
       name: "IntelliJ IDEA Blog"

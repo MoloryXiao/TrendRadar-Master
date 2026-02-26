@@ -276,7 +276,9 @@ def _load_ai_config(config_data: Dict) -> Dict:
     # 如果没有配置 AI_API_KEY，尝试使用 GITHUB_TOKEN（GitHub Models API）
     if not api_key:
         github_token = os.environ.get("GITHUB_TOKEN", "")
-        if github_token:
+        # 仅在非 GitHub Actions 环境下使用 GITHUB_TOKEN（Actions Token 没有 models 权限）
+        is_github_actions = os.environ.get("GITHUB_ACTIONS", "").lower() == "true"
+        if github_token and not is_github_actions:
             api_key = github_token
             # 自动配置 GitHub Models API
             if not api_base:
@@ -286,6 +288,8 @@ def _load_ai_config(config_data: Dict) -> Dict:
             elif "/" not in model:
                 model = f"openai/{model}"
             print("[AI] 使用 GITHUB_TOKEN 连接 GitHub Models API")
+        elif github_token:
+            print("[AI] GitHub Actions 环境下 GITHUB_TOKEN 无 models 权限，跳过 AI 功能。如需启用，请配置 AI_API_KEY")
 
     return {
         # LiteLLM 核心配置
