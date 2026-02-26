@@ -1370,6 +1370,85 @@ class NewsAnalyzer:
                 if len(filtered_details) > 10:
                     print(f"  ... 还有 {len(filtered_details) - 10} 篇被过滤")
 
+        # 翻译英文标题
+        rss_items = self._translate_rss_english_titles(rss_items)
+
+        return rss_items
+
+    @staticmethod
+    def _is_english_title(title: str) -> bool:
+        """判断标题是否为英文（主要由 ASCII 字母组成）"""
+        if not title:
+            return False
+        # 统计 ASCII 字母字符数
+        ascii_count = sum(1 for c in title if c.isascii() and c.isalpha())
+        total_alpha = sum(1 for c in title if c.isalpha())
+        if total_alpha == 0:
+            return False
+        return ascii_count / total_alpha > 0.8
+
+    def _translate_rss_english_titles(self, rss_items: List[Dict]) -> List[Dict]:
+        """翻译英文 RSS 标题为中文"""
+        if not rss_items:
+            return rss_items
+
+        # 检查 AI 是否可用
+        ai_config = self.ctx.config.get("AI", {})
+        if not ai_config.get("API_KEY"):
+            return rss_items
+
+        # 找出英文标题
+        english_indices = []
+        english_titles = []
+        for i, item in enumerate(rss_items):
+            if self._is_english_title(item.get("title", "")):
+                english_indices.append(i)
+                english_titles.append(item["title"])
+
+        if not english_titles:
+            return rss_items
+
+        print(f"[RSS] 检测到 {len(english_titles)} 条英文标题，正在翻译...")
+
+        try:
+            from trendradar.ai.client import AIClient
+            client = AIClient(ai_config)
+
+            # 批量翻译（一次 API 调用）
+            numbered_titles = "\n".join(f"[{i+1}] {t}" for i, t in enumerate(english_titles))
+            prompt = (
+                f"请将以下英文标题翻译为简洁的中文标题。"
+                f"保持编号格式 [数字] 翻译结果，每行一条，不要添加任何解释：\n\n{numbered_titles}"
+            )
+
+            response = client.chat([{"role": "user", "content": prompt}])
+
+            # 解析翻译结果
+            translations = {}
+            for line in response.strip().split("\n"):
+                line = line.strip()
+                if line.startswith("[") and "]" in line:
+                    bracket_end = line.index("]")
+                    try:
+                        idx = int(line[1:bracket_end])
+                        translated = line[bracket_end + 1:].strip()
+                        translations[idx] = translated
+                    except ValueError:
+                        continue
+
+            # 更新标题：原标题 | 中文翻译
+            translated_count = 0
+            for i, orig_idx in enumerate(english_indices):
+                translated = translations.get(i + 1, "")
+                if translated:
+                    rss_items[orig_idx]["title"] = f"{rss_items[orig_idx]['title']} | {translated}"
+                    translated_count += 1
+
+            print(f"[RSS] 成功翻译 {translated_count}/{len(english_titles)} 条英文标题")
+
+        except Exception as e:
+            print(f"[RSS] 英文标题翻译失败: {e}")
+
         return rss_items
 
     def _filter_rss_by_keywords(self, rss_items: List[Dict]) -> List[Dict]:

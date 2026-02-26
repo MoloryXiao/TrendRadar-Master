@@ -227,7 +227,7 @@ def _load_display_config(config_data: Dict) -> Dict:
     standalone = display.get("standalone", {})
 
     # 默认区域顺序
-    default_region_order = ["hotlist", "rss", "new_items", "standalone", "ai_analysis"]
+    default_region_order = ["ai_analysis", "new_items", "hotlist", "rss", "standalone"]
     region_order = display.get("region_order", default_region_order)
 
     # 验证 region_order 中的值是否合法
@@ -259,16 +259,39 @@ def _load_display_config(config_data: Dict) -> Dict:
 
 
 def _load_ai_config(config_data: Dict) -> Dict:
-    """加载 AI 模型配置（LiteLLM 格式）"""
+    """加载 AI 模型配置（LiteLLM 格式）
+
+    优先级：AI_API_KEY 环境变量 > config.yaml ai.api_key > GITHUB_TOKEN 环境变量
+    当使用 GITHUB_TOKEN 时，自动配置 GitHub Models API 端点和默认模型
+    """
     ai_config = config_data.get("ai", {})
 
     timeout_env = _get_env_int_or_none("AI_TIMEOUT")
 
+    # API Key 优先级：AI_API_KEY > config.yaml > GITHUB_TOKEN
+    api_key = _get_env_str("AI_API_KEY") or ai_config.get("api_key", "")
+    model = _get_env_str("AI_MODEL") or ai_config.get("model", "")
+    api_base = _get_env_str("AI_API_BASE") or ai_config.get("api_base", "")
+
+    # 如果没有配置 AI_API_KEY，尝试使用 GITHUB_TOKEN（GitHub Models API）
+    if not api_key:
+        github_token = os.environ.get("GITHUB_TOKEN", "")
+        if github_token:
+            api_key = github_token
+            # 自动配置 GitHub Models API
+            if not api_base:
+                api_base = "https://models.inference.ai.azure.com"
+            if not model or model == "deepseek/deepseek-chat":
+                model = "openai/gpt-4o-mini"
+            elif "/" not in model:
+                model = f"openai/{model}"
+            print("[AI] 使用 GITHUB_TOKEN 连接 GitHub Models API")
+
     return {
         # LiteLLM 核心配置
-        "MODEL": _get_env_str("AI_MODEL") or ai_config.get("model", ""),
-        "API_KEY": _get_env_str("AI_API_KEY") or ai_config.get("api_key", ""),
-        "API_BASE": _get_env_str("AI_API_BASE") or ai_config.get("api_base", ""),
+        "MODEL": model,
+        "API_KEY": api_key,
+        "API_BASE": api_base,
 
         # 生成参数
         "TIMEOUT": timeout_env if timeout_env is not None else ai_config.get("timeout", 120),
