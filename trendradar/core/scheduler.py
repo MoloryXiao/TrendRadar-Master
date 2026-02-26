@@ -405,8 +405,8 @@ class Scheduler:
 
         for a_start, a_end in segs1:
             for b_start, b_end in segs2:
-                # 两个区间有重叠的条件
-                if a_start <= b_end and b_start <= a_end:
+                # 两个区间有重叠的条件（相邻不算重叠）
+                if a_start < b_end and b_start < a_end:
                     return True
         return False
 
