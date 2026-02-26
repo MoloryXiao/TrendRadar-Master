@@ -41,7 +41,7 @@ app:
 # ===============================================================
 schedule:
   enabled: true                         # 是否启用调度系统
-  preset: "morning_evening"             # 预设模板名称（见上方说明）
+  preset: "custom"                      # 预设模板名称（见上方说明）
 
 
 # ===============================================================
@@ -156,6 +156,42 @@ rss:
       name: "Google DeepMind"
       url: "https://deepmind.google/blog/rss.xml" 
       max_age_days: 7
+
+    # Anthropic (AI安全与前沿研究)
+    - id: "anthropic-news"
+      name: "Anthropic News"
+      url: "https://www.anthropic.com/rss.xml"
+      max_age_days: 7
+
+    # Meta AI Research (AI前沿研究)
+    - id: "meta-ai"
+      name: "Meta AI Research"
+      url: "https://ai.meta.com/blog/rss/"
+      max_age_days: 7
+
+    # MIT Technology Review AI (AI前沿报道)
+    - id: "mit-tech-review-ai"
+      name: "MIT Tech Review AI"
+      url: "https://www.technologyreview.com/topic/artificial-intelligence/feed"
+      max_age_days: 3
+
+    # The Batch (Andrew Ng's AI Newsletter)
+    - id: "the-batch"
+      name: "The Batch (Andrew Ng)"
+      url: "https://www.deeplearning.ai/the-batch/feed/"
+      max_age_days: 7
+
+    # AI 量子位 (国内AI资讯)
+    - id: "qbitai"
+      name: "量子位"
+      url: "https://rsshub.app/qbitai"
+      max_age_days: 3
+
+    # 机器之心 (国内AI深度报道)
+    - id: "jiqizhixin"
+      name: "机器之心"
+      url: "https://rsshub.app/jiqizhixin"
+      max_age_days: 3
 
   # ===========================
   # Java & Spring 生态
@@ -290,7 +326,7 @@ display:
   # 两者共享此处的平台/RSS 配置，但开关互相独立（可只开 AI 分析、不推送展示）
   standalone:
     platforms: ["zhihu", "wallstreetcn-hot"]     # 热榜平台 ID 列表（如 ["zhihu", "weibo"]）
-    rss_feeds: ["51cto", "openai-news", "deepmind"]                     # RSS 源 ID 列表（如 ["hacker-news"]）
+    rss_feeds: ["51cto", "openai-news", "deepmind", "huggingface-blog", "anthropic-news", "meta-ai"]                     # RSS 源 ID 列表（如 ["hacker-news"]）
     max_items: 20                     # 每个源最多展示条数（0=不限制）
 
 

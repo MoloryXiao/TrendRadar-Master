@@ -193,8 +193,20 @@
 /谷歌|皮查伊|安卓|油管|\bGoogle\b|\bAlphabet\b|\bAndroid\b|\bChrome\b|\bYouTube\b|\bGemini\b|\bDeepMind\b|\bWaymo\b/ => 谷歌
 /库克|\biPhone\b|\biPad\b|\bMacBook\b|\biOS\b|\bVision Pro\b|\bAirPods\b|\bApple\b|\bTim Cook\b/ => 苹果
 
-/\bOpenAI\b|\bChatGPT\b|\bSora\b|\bDALL-E\b|\bSam Altman\b|\bGreg Brockman\b/ => OpenAI
-/\bAnthropic\b|\bClaude\b|\bDario Amodei\b/ => Claude
+/\bOpenAI\b|\bChatGPT\b|\bSora\b|\bDALL-E\b|\bGPT-4o\b|\bSam Altman\b|\bGreg Brockman\b/ => OpenAI
+/\bAnthropic\b|\bClaude\b|\bDario Amodei\b/ => Anthropic/Claude
+/\bMeta AI\b|\bLlama\b|\bLLaMA\b|\bMetaAI\b/ => Meta AI
+/\bMistral\b|\bMistral AI\b|\bMixtral\b/ => Mistral AI
+/\bCohere\b|\bCommand R\b/ => Cohere
+/\bStability AI\b|\bStable Diffusion\b/ => Stability AI
+/\bxAI\b|\bGrok\b/ => xAI
+/百川智能|\bBaichuan\b/ => 百川智能
+/零一万物|李开复|Yi模型/ => 零一万物
+/月之暗面|\bMoonshot\b|Kimi智能助手|Kimi Chat/ => 月之暗面
+/智谱|\bZhipu\b|\bGLM\b|\bChatGLM\b/ => 智谱AI
+/通义|通义千问|\bQwen\b/ => 通义千问
+/文心一言|\bERNIE\b|\bWenxin\b/ => 文心一言
+/\bMiniMax\b|小冰/ => MiniMax
 
 
 # ═══════════════════════════════════════════════════════════════
@@ -230,6 +242,23 @@
 [AI 相关]
 /(?<![a-zA-Z])ai(?![a-zA-Z])/
 人工智能
+/大模型|大语言模型|\bLLM\b|\bLarge Language Model\b/ => 大语言模型
+/机器学习|\bMachine Learning\b|\bML\b/ => 机器学习
+/深度学习|\bDeep Learning\b/ => 深度学习
+/神经网络|\bNeural Network\b|\bTransformer\b/ => 神经网络
+/\bAI Agent\b|智能体|AI助手|AI代理/ => AI Agent
+/\bRAG\b|检索增强生成/ => RAG
+/微调|Fine-tuning|\bFineTune\b|\bLoRA\b|\bQLoRA\b/ => 模型微调
+/提示词工程|\bPrompt Engineering\b|\bPrompt\b/ => Prompt Engineering
+/多模态|\bMultimodal\b|\bVision Language\b/ => 多模态AI
+/扩散模型|\bDiffusion\b|\bStable Diffusion\b|\bMidjourney\b|\bFlux\b/ => AI绘画
+/\bAGI\b|通用人工智能/ => AGI
+/AI安全|AI对齐|\bAI Safety\b|\bAlignment\b/ => AI安全
+/开源模型|\bOpen Source AI\b|\bOpen Weight\b/ => 开源模型
+/\bMLOps\b|\bLLMOps\b|模型部署|模型推理|推理优化|\bvLLM\b|\bTensorRT\b/ => AI工程化
+/\bAI编程\b|\bCopilot\b|\bCursor\b|\bAI coding\b|代码助手/ => AI编程
+/知识图谱|\bKnowledge Graph\b/ => 知识图谱
+/向量数据库|\bVector Database\b|\bPinecone\b|\bMilvus\b|\bWeaviate\b/ => 向量数据库
 
 [芯片]
 芯片
