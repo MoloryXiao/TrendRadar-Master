@@ -22,7 +22,7 @@ DEFAULT_BATCH_SIZES = {
 }
 
 # 默认区域顺序
-DEFAULT_REGION_ORDER = ["hotlist", "rss", "new_items", "standalone", "ai_analysis"]
+DEFAULT_REGION_ORDER = ["ai_analysis", "new_items", "hotlist", "rss", "standalone"]
 
 
 def split_content_into_batches(
