@@ -60,7 +60,7 @@
 /月之暗面|\bMoonshot\b|Kimi智能助手|Kimi Chat/ => 月之暗面
 ```
 
-此正则只匹配 `Kimi智能助手` 和 `Kimi Chat`，不会匹配标题中单独出现的 `Kimi`（如 "Kimi集成了openclaw"）。由于 "Kimi" 在中文语境中可能有其他含义，需要使用 `\bKimi\b` 的精确匹配来避免误匹配。
+此正则只匹配 `Kimi智能助手` 和 `Kimi Chat`，不会匹配标题中单独出现的 `Kimi`（如 "Kimi集成了openclaw"）。由于 Python `\b` 单词边界在中英混排文本中无法正确匹配（中文字符属于 `\w` 类型，不会触发 `\b`），需要使用 `(?<![a-zA-Z])Kimi(?![a-zA-Z])` 的英文字母边界来确保精确匹配。
 
 **缺少新兴技术产品关键词：**
 - `antigravity`、`openclaw`、`Claude Code` 等新兴技术产品名称未被收录
@@ -104,14 +104,15 @@
 
 **改进 Kimi 匹配模式：**
 ```
-/月之暗面|\bMoonshot\b|\bKimi\b/ => 月之暗面
+/月之暗面|\bMoonshot\b|(?<![a-zA-Z])Kimi(?![a-zA-Z])/ => 月之暗面
 ```
+注：使用 `(?<![a-zA-Z])` 和 `(?![a-zA-Z])` 代替 `\b`，因为 Python 正则中 `\b` 在中英混排文本中不生效（中文字符属于 `\w` 类型）。
 
 **新增技术产品关键词：**
 ```
 /antigravity/ => antigravity
 /openclaw/ => openclaw
-/\bClaude Code\b/ => Claude Code
+/Claude Code/ => Claude Code（添加至 AI编程 关键词组）
 ```
 
 ## 5. 影响评估
