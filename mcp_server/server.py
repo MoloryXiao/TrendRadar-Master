@@ -190,7 +190,8 @@ async def resolve_date_range(
 async def get_latest_news(
     platforms: Optional[List[str]] = None,
     limit: int = 50,
-    include_url: bool = False
+    include_url: bool = False,
+    ai_summary: bool = False
 ) -> str:
     """
     获取最新一批爬取的新闻数据，快速了解当前热点
@@ -199,6 +200,10 @@ async def get_latest_news(
         platforms: 平台ID列表，如 ['zhihu', 'weibo']，不指定则使用所有平台
         limit: 返回条数限制，默认50，最大1000
         include_url: 是否包含URL链接，默认False（节省token）
+        ai_summary: 是否使用 AI 对新闻进行预分析和摘要，默认False。
+                    开启后会在返回数据中附加 ai_summary 字段，包含 AI 生成的新闻摘要，
+                    帮助用户快速了解热点概况并聚焦感兴趣的内容。
+                    需要在 config.yaml 中配置 ai_summary.enabled 和 ai 模型参数。
 
     Returns:
         JSON格式的新闻列表
@@ -207,11 +212,13 @@ async def get_latest_news(
     - 默认展示全部返回数据，除非用户明确要求总结
     - 用户说"总结"或"挑重点"时才进行筛选
     - 用户问"为什么只显示部分"说明需要完整数据
+    - 当 ai_summary=True 时，优先展示 AI 摘要，然后展示完整数据
     """
     tools = _get_tools()
     result = await asyncio.to_thread(
         tools['data'].get_latest_news,
-        platforms=platforms, limit=limit, include_url=include_url
+        platforms=platforms, limit=limit, include_url=include_url,
+        ai_summary=ai_summary
     )
     return json.dumps(result, ensure_ascii=False, indent=2)
 
