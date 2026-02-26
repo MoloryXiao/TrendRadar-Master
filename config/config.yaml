@@ -77,6 +77,10 @@ platforms:
       name: "抖音"
     - id: "zhihu"
       name: "知乎"
+    - id: "36kr"
+      name: "36氪"
+    - id: "ithome"
+      name: "IT之家"
 
 
 
@@ -157,10 +161,16 @@ rss:
       url: "https://deepmind.google/blog/rss.xml" 
       max_age_days: 7
 
-    # Anthropic (AI安全与前沿研究)
+    # NVIDIA AI Blog (GPU与AI技术)
     - id: "nvidia-ai-blog"
       name: "NVIDIA AI Blog"
       url: "https://blogs.nvidia.com/feed/"
+      max_age_days: 7
+
+    # Anthropic (Claude相关AI安全与前沿研究)
+    - id: "anthropic-news"
+      name: "Anthropic News"
+      url: "https://www.anthropic.com/rss.xml"
       max_age_days: 7
 
     # Meta Engineering (AI前沿研究与工程)
@@ -191,6 +201,30 @@ rss:
     - id: "marktechpost"
       name: "MarkTechPost AI"
       url: "https://www.marktechpost.com/feed/"
+      max_age_days: 3
+
+    # Meta AI Research (AI前沿研究)
+    - id: "meta-ai"
+      name: "Meta AI Research"
+      url: "https://ai.meta.com/blog/rss/"
+      max_age_days: 7
+
+    # 51CTO (中文技术社区)
+    - id: "51cto"
+      name: "51CTO"
+      url: "https://blog.51cto.com/rss.php"
+      max_age_days: 3
+
+    # TechCrunch (综合科技英文媒体)
+    - id: "techcrunch"
+      name: "TechCrunch"
+      url: "https://techcrunch.com/feed/"
+      max_age_days: 3
+
+    # The Verge (综合科技英文媒体)
+    - id: "theverge"
+      name: "The Verge"
+      url: "https://www.theverge.com/rss/index.xml"
       max_age_days: 3
 
   # ===========================
@@ -325,8 +359,8 @@ display:
   #   - AI 分析：由 ai.include_standalone 开关控制，将完整数据送入 AI 做深度分析
   # 两者共享此处的平台/RSS 配置，但开关互相独立（可只开 AI 分析、不推送展示）
   standalone:
-    platforms: ["zhihu", "wallstreetcn-hot"]     # 热榜平台 ID 列表（如 ["zhihu", "weibo"]）
-    rss_feeds: ["51cto", "openai-news", "deepmind", "huggingface-blog", "anthropic-news", "meta-ai"]                     # RSS 源 ID 列表（如 ["hacker-news"]）
+    platforms: ["zhihu", "wallstreetcn-hot", "36kr"]     # 热榜平台 ID 列表（如 ["zhihu", "weibo"]）
+    rss_feeds: ["51cto", "openai-news", "deepmind", "huggingface-blog", "anthropic-news", "meta-ai", "techcrunch", "theverge"]                     # RSS 源 ID 列表（如 ["hacker-news"]）
     max_items: 20                     # 每个源最多展示条数（0=不限制）
 
 

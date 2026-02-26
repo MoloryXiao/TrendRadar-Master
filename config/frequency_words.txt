@@ -202,7 +202,7 @@
 /\bxAI\b|\bGrok\b/ => xAI
 /百川智能|\bBaichuan\b/ => 百川智能
 /零一万物|李开复|Yi模型/ => 零一万物
-/月之暗面|\bMoonshot\b|Kimi智能助手|Kimi Chat/ => 月之暗面
+/月之暗面|\bMoonshot\b|(?<![a-zA-Z])Kimi(?![a-zA-Z])/ => 月之暗面
 /智谱|\bZhipu\b|\bGLM\b|\bChatGLM\b/ => 智谱AI
 /通义|通义千问|\bQwen\b/ => 通义千问
 /文心一言|\bERNIE\b|\bWenxin\b/ => 文心一言
@@ -256,7 +256,7 @@
 /AI安全|AI对齐|\bAI Safety\b|\bAlignment\b/ => AI安全
 /开源模型|\bOpen Source AI\b|\bOpen Weight\b/ => 开源模型
 /\bMLOps\b|\bLLMOps\b|模型部署|模型推理|推理优化|\bvLLM\b|\bTensorRT\b/ => AI工程化
-/\bAI编程\b|\bCopilot\b|\bCursor\b|\bAI coding\b|代码助手/ => AI编程
+/\bAI编程\b|\bCopilot\b|\bCursor\b|\bAI coding\b|代码助手|Claude Code/ => AI编程
 /知识图谱|\bKnowledge Graph\b/ => 知识图谱
 /向量数据库|\bVector Database\b|\bPinecone\b|\bMilvus\b|\bWeaviate\b/ => 向量数据库
 
@@ -282,6 +282,10 @@
 量子
 脑机
 基因
+
+# 新兴技术产品
+/antigravity/ => antigravity
+/openclaw/ => openclaw
 
 # 产业政策
 生产力
