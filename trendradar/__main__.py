@@ -1385,7 +1385,7 @@ class NewsAnalyzer:
         total_alpha = sum(1 for c in title if c.isalpha())
         if total_alpha == 0:
             return False
-        return ascii_count / total_alpha > 0.8
+        return ascii_count / total_alpha > 0.8  # 80%+ ASCII letters = English title
 
     def _translate_rss_english_titles(self, rss_items: List[Dict]) -> List[Dict]:
         """翻译英文 RSS 标题为中文"""

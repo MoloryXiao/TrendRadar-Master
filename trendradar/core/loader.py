@@ -281,7 +281,7 @@ def _load_ai_config(config_data: Dict) -> Dict:
             # 自动配置 GitHub Models API
             if not api_base:
                 api_base = "https://models.inference.ai.azure.com"
-            if not model or model == "deepseek/deepseek-chat":
+            if not model or model == "deepseek/deepseek-chat":  # config.yaml 默认模型
                 model = "openai/gpt-4o-mini"
             elif "/" not in model:
                 model = f"openai/{model}"
