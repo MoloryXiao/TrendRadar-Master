@@ -136,11 +136,10 @@ rss:
   # ===========================
   # AI & 大模型相关 (Open Source & Research)
   # ===========================
-    - id: "51cto"
-      name: "51 cto"
-      url: "https://rsshub.app/51cto/index/recommend"
-      max_age_days: 3               # 示例：只推送1天内的文章
-      enabled: false                # 已禁用：rsshub.app 公共实例返回 403
+    - id: "google-ai-blog"
+      name: "Google AI Blog"
+      url: "https://blog.google/technology/ai/rss/"
+      max_age_days: 3
       
     - id: "openai-news"
       name: "OpenAI News"
@@ -159,18 +158,16 @@ rss:
       max_age_days: 7
 
     # Anthropic (AI安全与前沿研究)
-    - id: "anthropic-news"
-      name: "Anthropic News"
-      url: "https://www.anthropic.com/rss.xml"
+    - id: "nvidia-ai-blog"
+      name: "NVIDIA AI Blog"
+      url: "https://blogs.nvidia.com/feed/"
       max_age_days: 7
-      enabled: false                # 已禁用：URL 返回 404，需更新为有效地址
 
-    # Meta AI Research (AI前沿研究)
-    - id: "meta-ai"
-      name: "Meta AI Research"
-      url: "https://ai.meta.com/blog/rss/"
+    # Meta Engineering (AI前沿研究与工程)
+    - id: "meta-engineering"
+      name: "Meta Engineering Blog"
+      url: "https://engineering.fb.com/feed/"
       max_age_days: 7
-      enabled: false                # 已禁用：URL 返回 400，需更新为有效地址
 
     # MIT Technology Review AI (AI前沿报道)
     - id: "mit-tech-review-ai"
@@ -178,26 +175,23 @@ rss:
       url: "https://www.technologyreview.com/topic/artificial-intelligence/feed"
       max_age_days: 3
 
-    # The Batch (Andrew Ng's AI Newsletter)
-    - id: "the-batch"
-      name: "The Batch (Andrew Ng)"
-      url: "https://www.deeplearning.ai/the-batch/feed/"
-      max_age_days: 7
-      enabled: false                # 已禁用：URL 返回 404，需更新为有效地址
+    # Lil'Log (Lilian Weng AI 研究博客)
+    - id: "lilianweng"
+      name: "Lil'Log (Lilian Weng)"
+      url: "https://lilianweng.github.io/index.xml"
+      max_age_days: 14
 
-    # AI 量子位 (国内AI资讯)
-    - id: "qbitai"
-      name: "量子位"
-      url: "https://rsshub.app/qbitai"
+    # AWS Machine Learning Blog (云端AI技术)
+    - id: "aws-ml-blog"
+      name: "AWS Machine Learning Blog"
+      url: "https://aws.amazon.com/blogs/machine-learning/feed/"
       max_age_days: 3
-      enabled: false                # 已禁用：rsshub.app 公共实例返回 403
 
-    # 机器之心 (国内AI深度报道)
-    - id: "jiqizhixin"
-      name: "机器之心"
-      url: "https://rsshub.app/jiqizhixin"
+    # MarkTechPost (AI新闻与深度报道)
+    - id: "marktechpost"
+      name: "MarkTechPost AI"
+      url: "https://www.marktechpost.com/feed/"
       max_age_days: 3
-      enabled: false                # 已禁用：rsshub.app 公共实例返回 403
 
   # ===========================
   # Java & Spring 生态
@@ -209,10 +203,9 @@ rss:
   
     - id: "baeldung"
       name: "Baeldung (Java/Spring 教程)"
-      url: "https://www.baeldung.com/feed"
+      url: "https://feeds.feedblitz.com/baeldung"
       # 非常活跃的教程站，建议 max_age_days 设小一点，否则一次推送太多
       max_age_days: 2
-      enabled: false                # 已禁用：网站返回 403，可尝试替换为 https://feeds.feedblitz.com/baeldung
   
     - id: "jetbrains-idea"
       name: "IntelliJ IDEA Blog"
@@ -465,7 +458,7 @@ ai:
   # 完整列表: https://docs.litellm.ai/docs/providers
   # 如果你对于看英文文档比较头疼，那么可以点击页面右下角的 【Ask AI】 ,用中文询问怎么配置 
   
-  model: "deepseek/deepseek-chat"
+  model: "gemini/gemini-2.5-flash"
 
   api_key: ""                       # API Key（建议使用环境变量 AI_API_KEY）
   
