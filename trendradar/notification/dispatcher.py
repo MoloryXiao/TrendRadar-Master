@@ -195,7 +195,17 @@ class NotificationDispatcher:
         results = {}
 
         # 获取区域显示配置
-        display_regions = self.config.get("DISPLAY", {}).get("REGIONS", {})
+        display_config = self.config.get("DISPLAY", {})
+        display_regions = display_config.get("REGIONS", {})
+
+        # 跨区域去重
+        if display_config.get("DEDUPLICATE_CROSS_REGION", True):
+            from trendradar.core.dedup import deduplicate_cross_regions
+            region_order = display_config.get("REGION_ORDER",
+                ["ai_analysis", "new_items", "hotlist", "rss", "standalone"])
+            report_data, rss_items, rss_new_items, standalone_data = deduplicate_cross_regions(
+                report_data, rss_items, rss_new_items, standalone_data, region_order
+            )
 
         # 执行翻译（如果启用）
         report_data, rss_items, rss_new_items = self._translate_content(

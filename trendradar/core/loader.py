@@ -241,6 +241,8 @@ def _load_display_config(config_data: Dict) -> Dict:
     return {
         # 区域显示顺序
         "REGION_ORDER": region_order,
+        # 跨区域标题去重
+        "DEDUPLICATE_CROSS_REGION": display.get("deduplicate_cross_region", True),
         # 区域开关
         "REGIONS": {
             "HOTLIST": regions.get("hotlist", True),
@@ -555,9 +557,10 @@ def load_config(config_path: Optional[str] = None) -> Dict[str, Any]:
     # 权重配置
     config["WEIGHT_CONFIG"] = _load_weight_config(config_data)
 
-    # 平台配置
+    # 平台配置（过滤 enabled: false 的平台）
     platforms_config = config_data.get("platforms", {})
-    config["PLATFORMS"] = platforms_config.get("sources", [])
+    all_sources = platforms_config.get("sources", [])
+    config["PLATFORMS"] = [s for s in all_sources if s.get("enabled", True)]
 
     # RSS 配置
     config["RSS"] = _load_rss_config(config_data)

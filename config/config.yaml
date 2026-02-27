@@ -61,8 +61,10 @@ platforms:
       name: "澎湃新闻"
     - id: "bilibili-hot-search"
       name: "bilibili 热搜"
+      enabled: false                    # 娱乐向热搜，与技术/财经关注度重叠较少，按需开启
     - id: "cls-hot"
       name: "财联社热门"
+      enabled: false                    # 与华尔街见闻内容高度重叠，保留一个即可
     - id: "zhihu"
       name: "知乎"
     - id: "36kr"
@@ -192,36 +194,42 @@ rss:
       name: "MarkTechPost AI"
       url: "https://www.marktechpost.com/feed/"
       max_age_days: 3
+      enabled: false                    # 更新频繁，与其他 AI 源内容重叠较多
 
     # arXiv AI (人工智能前沿论文)
     - id: "arxiv-ai"
       name: "arXiv AI"
       url: "https://rss.arxiv.org/rss/cs.AI"
       max_age_days: 3
+      enabled: false                    # 论文数量极多，建议按需开启
 
     # arXiv Machine Learning (机器学习前沿论文)
     - id: "arxiv-ml"
       name: "arXiv Machine Learning"
       url: "https://rss.arxiv.org/rss/cs.LG"
       max_age_days: 3
+      enabled: false                    # 论文数量极多，与 arxiv-ai 内容高度重叠
 
     # arXiv Computation and Language (NLP/大语言模型前沿论文)
     - id: "arxiv-cl"
       name: "arXiv NLP/LLM"
       url: "https://rss.arxiv.org/rss/cs.CL"
       max_age_days: 3
+      enabled: false                    # 论文数量极多，建议按需开启
 
     # Papers With Code (最新AI论文与代码)
     - id: "papers-with-code"
       name: "Papers With Code"
       url: "https://paperswithcode.com/latest.atom"
       max_age_days: 3
+      enabled: false                    # 更新频繁，信息量大，建议按需开启
 
     # Towards Data Science (数据科学与AI深度文章)
     - id: "towards-data-science"
       name: "Towards Data Science"
       url: "https://towardsdatascience.com/feed"
       max_age_days: 3
+      enabled: false                    # 更新频繁，信息量大，建议按需开启
 
     # Sebastian Raschka (AI/深度学习研究博客)
     - id: "sebastian-raschka"
@@ -355,7 +363,7 @@ report:
 
   rank_threshold: 5                   # 排名高亮阈值
 
-  max_news_per_keyword: 0             # 每个关键词最大显示数量（0=不限制）
+  max_news_per_keyword: 5             # 每个关键词最大显示数量（0=不限制）
 
 
 # ===============================================================
@@ -381,6 +389,12 @@ display:
     - hotlist                         # 2️⃣ 热榜区域（关键词匹配）
     - rss                             # 3️⃣ RSS 订阅区域
     - standalone                      # 4️⃣ 独立展示区
+
+  # 跨区域标题去重
+  # 开启后，同一标题只会在第一个出现的区域中显示，后续区域自动跳过
+  # 去重优先级按 region_order 从上到下排列
+  # 例如：某条新闻同时匹配了 hotlist 和 standalone，只会在 hotlist 中显示
+  deduplicate_cross_region: true
 
   # 推送区域开关
   # 控制各区域是否启用（配合 region_order 使用）
