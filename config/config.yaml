@@ -55,10 +55,6 @@ schedule:
 platforms:
   enabled: true                         # 是否启用热榜平台抓取
   sources:
-    - id: "toutiao"
-      name: "今日头条"
-    - id: "baidu"
-      name: "百度热搜"
     - id: "wallstreetcn-hot"
       name: "华尔街见闻"
     - id: "thepaper"
@@ -67,20 +63,14 @@ platforms:
       name: "bilibili 热搜"
     - id: "cls-hot"
       name: "财联社热门"
-    - id: "ifeng"
-      name: "凤凰网"
-    - id: "tieba"
-      name: "贴吧"
-    - id: "weibo"
-      name: "微博"
-    - id: "douyin"
-      name: "抖音"
     - id: "zhihu"
       name: "知乎"
     - id: "36kr"
       name: "36氪"
     - id: "ithome"
       name: "IT之家"
+    - id: "github-trending-today"
+      name: "GitHub Trending"
 
 
 
@@ -201,6 +191,60 @@ rss:
     - id: "marktechpost"
       name: "MarkTechPost AI"
       url: "https://www.marktechpost.com/feed/"
+      max_age_days: 3
+
+    # arXiv AI (人工智能前沿论文)
+    - id: "arxiv-ai"
+      name: "arXiv AI"
+      url: "https://rss.arxiv.org/rss/cs.AI"
+      max_age_days: 3
+
+    # arXiv Machine Learning (机器学习前沿论文)
+    - id: "arxiv-ml"
+      name: "arXiv Machine Learning"
+      url: "https://rss.arxiv.org/rss/cs.LG"
+      max_age_days: 3
+
+    # arXiv Computation and Language (NLP/大语言模型前沿论文)
+    - id: "arxiv-cl"
+      name: "arXiv NLP/LLM"
+      url: "https://rss.arxiv.org/rss/cs.CL"
+      max_age_days: 3
+
+    # Papers With Code (最新AI论文与代码)
+    - id: "papers-with-code"
+      name: "Papers With Code"
+      url: "https://paperswithcode.com/latest"
+      max_age_days: 3
+
+    # Towards Data Science (数据科学与AI深度文章)
+    - id: "towards-data-science"
+      name: "Towards Data Science"
+      url: "https://towardsdatascience.com/feed"
+      max_age_days: 3
+
+    # Sebastian Raschka (AI/深度学习研究博客)
+    - id: "sebastian-raschka"
+      name: "Sebastian Raschka"
+      url: "https://sebastianraschka.com/rss_feed.xml"
+      max_age_days: 14
+
+    # The Batch by Andrew Ng (Andrew Ng的AI周报)
+    - id: "the-batch"
+      name: "The Batch (Andrew Ng)"
+      url: "https://www.deeplearning.ai/the-batch/feed/"
+      max_age_days: 7
+
+    # LangChain Blog (AI Agent框架)
+    - id: "langchain-blog"
+      name: "LangChain Blog"
+      url: "https://blog.langchain.dev/rss/"
+      max_age_days: 7
+
+    # AI最前线 (机器之心旗下)
+    - id: "jiqizhixin"
+      name: "机器之心"
+      url: "https://www.jiqizhixin.com/rss"
       max_age_days: 3
 
     # Meta AI Research (AI前沿研究)
@@ -359,8 +403,8 @@ display:
   #   - AI 分析：由 ai.include_standalone 开关控制，将完整数据送入 AI 做深度分析
   # 两者共享此处的平台/RSS 配置，但开关互相独立（可只开 AI 分析、不推送展示）
   standalone:
-    platforms: ["zhihu", "wallstreetcn-hot", "36kr"]     # 热榜平台 ID 列表（如 ["zhihu", "weibo"]）
-    rss_feeds: ["51cto", "openai-news", "deepmind", "huggingface-blog", "anthropic-news", "meta-ai", "techcrunch", "theverge"]                     # RSS 源 ID 列表（如 ["hacker-news"]）
+    platforms: ["zhihu", "36kr", "github-trending-today"]     # 热榜平台 ID 列表（如 ["zhihu", "weibo"]）
+    rss_feeds: ["openai-news", "deepmind", "huggingface-blog", "anthropic-news", "meta-ai", "techcrunch", "theverge", "arxiv-ai", "langchain-blog"]                     # RSS 源 ID 列表（如 ["hacker-news"]）
     max_items: 20                     # 每个源最多展示条数（0=不限制）
 
 
