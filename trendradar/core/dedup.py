@@ -30,7 +30,7 @@ def deduplicate_cross_regions(
     Returns:
         (report_data, rss_items, rss_new_items, standalone_data) 去重后的数据
     """
-    # 深拷贝避免修改原始数据
+    # 深拷贝避免修改原始数据（原始数据还需供 AI 分析等其他消费者使用）
     report_data = copy.deepcopy(report_data)
     rss_items = copy.deepcopy(rss_items) if rss_items else rss_items
     rss_new_items = copy.deepcopy(rss_new_items) if rss_new_items else rss_new_items
