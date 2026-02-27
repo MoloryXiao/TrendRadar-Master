@@ -27,6 +27,7 @@ def render_html_content(
     standalone_data: Optional[Dict] = None,
     ai_analysis: Optional[Any] = None,
     show_new_section: bool = True,
+    deduplicate_cross_region: bool = True,
 ) -> str:
     """渲染HTML内容
 
@@ -43,6 +44,7 @@ def render_html_content(
         standalone_data: 独立展示区数据（可选），包含 platforms 和 rss_feeds
         ai_analysis: AI 分析结果对象（可选），AIAnalysisResult 实例
         show_new_section: 是否显示新增热点区域
+        deduplicate_cross_region: 是否跨区域去重（默认开启）
 
     Returns:
         渲染后的 HTML 字符串
@@ -51,6 +53,13 @@ def render_html_content(
     default_region_order = ["ai_analysis", "new_items", "hotlist", "rss", "standalone"]
     if region_order is None:
         region_order = default_region_order
+
+    # 跨区域去重
+    if deduplicate_cross_region:
+        from trendradar.core.dedup import deduplicate_cross_regions
+        report_data, rss_items, rss_new_items, standalone_data = deduplicate_cross_regions(
+            report_data, rss_items, rss_new_items, standalone_data, region_order
+        )
 
     html = """
     <!DOCTYPE html>

@@ -767,6 +767,10 @@ class NewsAnalyzer:
                 if feed_id in feed_items_map:
                     feed_data = feed_items_map[feed_id]
                     items = feed_data["items"]
+                    # 按发布时间排序（最新在前）
+                    # published_at 为 ISO 8601 格式，字符串比较即可正确排序
+                    # 缺少发布时间的条目（空字符串）会排到末尾
+                    items.sort(key=lambda x: x.get("published_at", ""), reverse=True)
                     if max_items > 0:
                         items = items[:max_items]
                     if items:
@@ -1369,6 +1373,11 @@ class NewsAnalyzer:
                     print(f"  - [{days_str}天前] [{detail['feed']}] {detail['title']} (限制: {detail['max_days']}天)")
                 if len(filtered_details) > 10:
                     print(f"  ... 还有 {len(filtered_details) - 10} 篇被过滤")
+
+        # 按发布时间排序（最新在前）
+        # published_at 为 ISO 8601 格式，字符串比较即可正确排序
+        # 缺少发布时间的条目（空字符串）会排到末尾
+        rss_items.sort(key=lambda x: x.get("published_at", ""), reverse=True)
 
         # 翻译英文标题
         rss_items = self._translate_rss_english_titles(rss_items)

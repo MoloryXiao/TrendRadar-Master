@@ -340,6 +340,7 @@ class AppContext:
             ai_analysis=ai_analysis,
             show_new_section=self.show_new_section,
             standalone_data=standalone_data,
+            deduplicate_cross_region=self.config.get("DISPLAY", {}).get("DEDUPLICATE_CROSS_REGION", True),
         )
 
     # === 通知内容渲染 ===
