@@ -202,7 +202,7 @@
 /\bxAI\b|\bGrok\b/ => xAI
 /百川智能|\bBaichuan\b/ => 百川智能
 /零一万物|李开复|Yi模型/ => 零一万物
-/月之暗面|\bMoonshot\b|Kimi智能助手|Kimi Chat/ => 月之暗面
+/月之暗面|\bMoonshot\b|(?<![a-zA-Z])Kimi(?![a-zA-Z])/ => 月之暗面
 /智谱|\bZhipu\b|\bGLM\b|\bChatGLM\b/ => 智谱AI
 /通义|通义千问|\bQwen\b/ => 通义千问
 /文心一言|\bERNIE\b|\bWenxin\b/ => 文心一言
@@ -245,7 +245,7 @@
 /大模型|大语言模型|\bLLM\b|\bLarge Language Model\b/ => 大语言模型
 /机器学习|\bMachine Learning\b|\bML\b/ => 机器学习
 /深度学习|\bDeep Learning\b/ => 深度学习
-/神经网络|\bNeural Network\b|\bTransformer\b/ => 神经网络
+/神经网络|\bNeural Network\b|(?<![a-zA-Z])Transformer(?![a-zA-Z])/ => 神经网络
 /\bAI Agent\b|智能体|AI助手|AI代理/ => AI Agent
 /\bRAG\b|检索增强生成/ => RAG
 /微调|Fine-tuning|\bFineTune\b|\bLoRA\b|\bQLoRA\b/ => 模型微调
@@ -256,9 +256,23 @@
 /AI安全|AI对齐|\bAI Safety\b|\bAlignment\b/ => AI安全
 /开源模型|\bOpen Source AI\b|\bOpen Weight\b/ => 开源模型
 /\bMLOps\b|\bLLMOps\b|模型部署|模型推理|推理优化|\bvLLM\b|\bTensorRT\b/ => AI工程化
-/\bAI编程\b|\bCopilot\b|\bCursor\b|\bAI coding\b|代码助手/ => AI编程
+/\bAI编程\b|\bCopilot\b|\bCursor\b|\bAI coding\b|代码助手|Claude Code/ => AI编程
 /知识图谱|\bKnowledge Graph\b/ => 知识图谱
 /向量数据库|\bVector Database\b|\bPinecone\b|\bMilvus\b|\bWeaviate\b/ => 向量数据库
+/\bGPT\b|\bGPT-4\b|\bGPT-5\b/ => GPT系列
+/(?<![a-zA-Z])LangChain(?![a-zA-Z])|(?<![a-zA-Z])LlamaIndex(?![a-zA-Z])|(?<![a-zA-Z])AutoGen(?![a-zA-Z])|(?<![a-zA-Z])CrewAI(?![a-zA-Z])|(?<![a-zA-Z])Dify(?![a-zA-Z])|(?<![a-zA-Z])Coze(?![a-zA-Z])/ => AI Agent框架
+/(?<![a-zA-Z])MCP(?![a-zA-Z])|\bModel Context Protocol\b|模型上下文协议/ => MCP
+/\bFunction Calling\b|\bTool Use\b|函数调用|工具调用/ => Function Calling
+/推理模型|reasoning model|\bCoT\b|Chain of Thought|思维链/ => 推理模型
+/AI芯片|\bTPU\b|\bNPU\b|AI加速器|AI accelerator/ => AI芯片
+/小模型|\bSLM\b|\bSmall Language Model\b|端侧模型|边缘AI/ => 小模型/端侧AI
+/合成数据|\bSynthetic Data\b|数据合成/ => 合成数据
+/\bAI基础设施\b|AI Infra|\bAI infrastructure\b/ => AI基础设施
+/\bMLflow\b|\bWandB\b|\bWeights & Biases\b|模型训练|预训练|训练框架/ => 模型训练
+/AI论文|研究论文|\barXiv\b|学术论文/ => AI论文
+
+[GitHub热门]
+/\bGitHub\b|\bgithub\b|开源项目|GitHub Trending/ => GitHub
 
 [芯片]
 芯片
@@ -282,6 +296,10 @@
 量子
 脑机
 基因
+
+# 新兴技术产品
+/antigravity/ => antigravity
+/openclaw/ => openclaw
 
 # 产业政策
 生产力
