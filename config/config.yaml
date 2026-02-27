@@ -214,7 +214,7 @@ rss:
     # Papers With Code (最新AI论文与代码)
     - id: "papers-with-code"
       name: "Papers With Code"
-      url: "https://paperswithcode.com/latest"
+      url: "https://paperswithcode.com/latest.atom"
       max_age_days: 3
 
     # Towards Data Science (数据科学与AI深度文章)

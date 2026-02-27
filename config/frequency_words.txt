@@ -259,8 +259,8 @@
 /\bAI编程\b|\bCopilot\b|\bCursor\b|\bAI coding\b|代码助手|Claude Code/ => AI编程
 /知识图谱|\bKnowledge Graph\b/ => 知识图谱
 /向量数据库|\bVector Database\b|\bPinecone\b|\bMilvus\b|\bWeaviate\b/ => 向量数据库
-/\bGPT\b|\bGPT-4\b|\bGPT-5\b|\bo1\b|\bo3\b/ => GPT系列
-/\bLangChain\b|\bLlamaIndex\b|\bAutoGen\b|(?<![a-zA-Z])CrewAI(?![a-zA-Z])|(?<![a-zA-Z])Dify(?![a-zA-Z])|(?<![a-zA-Z])Coze(?![a-zA-Z])/ => AI Agent框架
+/\bGPT\b|\bGPT-4\b|\bGPT-5\b/ => GPT系列
+/(?<![a-zA-Z])LangChain(?![a-zA-Z])|(?<![a-zA-Z])LlamaIndex(?![a-zA-Z])|(?<![a-zA-Z])AutoGen(?![a-zA-Z])|(?<![a-zA-Z])CrewAI(?![a-zA-Z])|(?<![a-zA-Z])Dify(?![a-zA-Z])|(?<![a-zA-Z])Coze(?![a-zA-Z])/ => AI Agent框架
 /(?<![a-zA-Z])MCP(?![a-zA-Z])|\bModel Context Protocol\b|模型上下文协议/ => MCP
 /\bFunction Calling\b|\bTool Use\b|函数调用|工具调用/ => Function Calling
 /推理模型|reasoning model|\bCoT\b|Chain of Thought|思维链/ => 推理模型
@@ -269,11 +269,10 @@
 /合成数据|\bSynthetic Data\b|数据合成/ => 合成数据
 /\bAI基础设施\b|AI Infra|\bAI infrastructure\b/ => AI基础设施
 /\bMLflow\b|\bWandB\b|\bWeights & Biases\b|模型训练|预训练|训练框架/ => 模型训练
-/AI论文|研究论文|\barXiv\b|\bpaper\b|学术论文/ => AI论文
+/AI论文|研究论文|\barXiv\b|学术论文/ => AI论文
 
 [GitHub热门]
 /\bGitHub\b|\bgithub\b|开源项目|GitHub Trending/ => GitHub
-/\bstar\b|\bstars\b|开源之星/ => 开源之星
 
 [芯片]
 芯片
